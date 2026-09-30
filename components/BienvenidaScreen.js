@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
-export default function BienvenidaScreen() {
+// 1. Recibimos el evento onStart desde App.js
+export default function BienvenidaScreen({ onStart }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>🍔 EasyMenu</Text>
@@ -13,7 +14,12 @@ export default function BienvenidaScreen() {
         <Text style={styles.infoText}>Versión Móvil - SDK 54</Text>
       </View>
 
-      <TouchableOpacity style={styles.button} activeOpacity={0.8}>
+      {/* 2. Le asignamos onPress={onStart} al botón */}
+      <TouchableOpacity 
+        style={styles.button} 
+        activeOpacity={0.8} 
+        onPress={onStart}
+      >
         <Text style={styles.buttonText}>Iniciar Sesión</Text>
       </TouchableOpacity>
 
@@ -27,7 +33,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#f5f5f5',
     alignItems: 'center',
-    justifyContent: 'center',
+    justify: 'center',
     padding: 20,
   },
   title: {
