@@ -1,9 +1,12 @@
-const BASE_URL = 'http://192.168.1.17:5000/api';
+const BASE_URL = 'http://192.168.0.186:8080/api';
 export const apiService = {
   login: async (email, password) => {
     const response = await fetch(`${BASE_URL}/auth/login`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ 
+        correo: email,  
+        clave: password 
+      }),
     });
     if (!response.ok) throw new Error('Credenciales incorrectas');
     return await response.json();
