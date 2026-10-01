@@ -4,6 +4,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'reac
 export default function LoginScreen({ onLoginSuccess }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  
 
   const handleLogin = () => {
     if (!email || !password) return Alert.alert('Error', 'Completa los campos');
