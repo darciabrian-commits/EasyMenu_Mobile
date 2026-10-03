@@ -1,28 +1,66 @@
 const BASE_URL = 'http://192.168.0.186:8080/api';
-export const apiService = {
-  login: async (email, password) => {
-    const response = await fetch(`${BASE_URL}/auth/login`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ 
-        correo: email,  
-        clave: password 
-      }),
-    });
-    if (!response.ok) throw new Error('Credenciales incorrectas');
-    return await response.json();
-  },
-  
-  // CRUD 1: Platillos
-  getPlatillos: async () => (await fetch(`${BASE_URL}/platillos`)).json(),
-  createPlatillo: async (data) => (await fetch(`${BASE_URL}/platillos`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })).json(),
-  updatePlatillo: async (id, data) => (await fetch(`${BASE_URL}/platillos/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })).json(),
-  deletePlatillo: async (id) => (await fetch(`${BASE_URL}/platillos/${id}`, { method: 'DELETE' })).json(),
 
-  // CRUD 2: Pedidos
-  getPedidos: async () => (await fetch(`${BASE_URL}/pedidos`)).json(),
-  createPedido: async (data) => (await fetch(`${BASE_URL}/pedidos`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })).json(),
-  updatePedido: async (id, data) => (await fetch(`${BASE_URL}/pedidos/${id}`, { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })).json(),
-  deletePedido: async (id) => (await fetch(`${BASE_URL}/pedidos/${id}`, { method: 'DELETE' })).json(),
+let authToken = null;
+
+const request = async (path, options = {}, requiresAuth = false) => {
+  const headers = {
+    'Content-Type': 'application/json',
+    ...(options.headers || {}),
+  };
+
+  if (requiresAuth && authToken) {
+    headers.Authorization = `Bearer ${authToken}`;
+  }
+
+  const response = await fetch(`${BASE_URL}${path}`, {
+    ...options,
+    headers,
+  });
+
+  if (!response.ok) {
+    let message = `Error ${response.status}`;
+    try {
+      const body = await response.text();
+      if (body) message = body;
+    } catch (_) {}
+    throw new Error(message);
+  }
+
+  if (response.status === 204) return null;
+  return response.json();
 };
 
+export const apiService = {
+  login: async (email, password) => {
+    const data = await request('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ correo: email, clave: password }),
+    });
 
+    authToken = data.token;
+    return data;
+  },
+
+  logout: () => {
+    authToken = null;
+  },
+
+  getProductos: () => request('/productos'),
+
+  createProducto: (data) =>
+    request('/productos', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }, true),
+
+  updateProducto: (id, data) =>
+    request(`/productos/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(data),
+    }, true),
+
+  deleteProducto: (id) =>
+    request(`/productos/${id}`, {
+      method: 'DELETE',
+    }, true),
+};
