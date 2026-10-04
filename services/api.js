@@ -1,4 +1,4 @@
-const BASE_URL = 'http://192.168.0.186:8080/api';
+const BASE_URL = 'https://easymenu-api-1nce.onrender.com/api';
 
 let authToken = null;
 

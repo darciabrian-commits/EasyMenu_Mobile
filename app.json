@@ -26,10 +26,14 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "plugins": [
+      "expo-font"
+    ],
     "extra": {
       "eas": {
-        "projectId": "fc92e850-4843-49ad-856c-2e5492c75a08"
+        "projectId": "2c0b32d2-2d41-47d9-b716-207dc1cafa95"
       }
-    }
+    },
+    "owner": "briandarcia"
   }
 }
