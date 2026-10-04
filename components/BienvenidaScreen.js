@@ -1,29 +1,72 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image
+} from 'react-native';
+
 import { StatusBar } from 'expo-status-bar';
 
-// 1. Recibimos el evento onStart desde App.js
 export default function BienvenidaScreen({ onStart }) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>🍔 EasyMenu</Text>
-      <Text style={styles.subtitle}>Gestión inteligente para tu restaurante</Text>
-      
-      <View style={styles.card}>
-        <Text style={styles.welcomeText}>¡Bienvenido al sistema!</Text>
-        <Text style={styles.infoText}>Versión Móvil - SDK 54</Text>
+      <StatusBar style="dark" />
+
+      <View style={styles.logoContainer}>
+        <Image
+          source={require('../assets/icon.png')}
+          style={styles.logo}
+          resizeMode="contain"
+        />
       </View>
 
-      {/* 2. Le asignamos onPress={onStart} al botón */}
-      <TouchableOpacity 
-        style={styles.button} 
-        activeOpacity={0.8} 
+      <Text style={styles.title}>
+        Bienvenido a EasyMenu
+      </Text>
+
+      <Text style={styles.subtitle}>
+        Gestiona productos y pedidos de forma rápida,
+        sencilla y desde un solo lugar.
+      </Text>
+
+      <View style={styles.features}>
+        <View style={styles.feature}>
+          <Text style={styles.featureIcon}>🍔</Text>
+          <Text style={styles.featureText}>
+            Productos
+          </Text>
+        </View>
+
+        <View style={styles.feature}>
+          <Text style={styles.featureIcon}>📋</Text>
+          <Text style={styles.featureText}>
+            Pedidos
+          </Text>
+        </View>
+
+        <View style={styles.feature}>
+          <Text style={styles.featureIcon}>⚡</Text>
+          <Text style={styles.featureText}>
+            Fácil y rápido
+          </Text>
+        </View>
+      </View>
+
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.85}
         onPress={onStart}
       >
-        <Text style={styles.buttonText}>Iniciar Sesión</Text>
+        <Text style={styles.buttonText}>
+          Comenzar
+        </Text>
       </TouchableOpacity>
 
-      <StatusBar style="auto" />
+      <Text style={styles.footer}>
+        EasyMenu · Sistema de gestión
+      </Text>
     </View>
   );
 }
@@ -31,53 +74,84 @@ export default function BienvenidaScreen({ onStart }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#FFF7F0',
+    paddingHorizontal: 24,
+    justifyContent: 'center'
+  },
+
+  logoContainer: {
     alignItems: 'center',
-    justify: 'center',
-    padding: 20,
+    marginBottom: 20
   },
+
+  logo: {
+    width: 180,
+    height: 180,
+    borderRadius: 35
+  },
+
   title: {
-    fontSize: 40,
+    fontSize: 30,
     fontWeight: 'bold',
-    color: '#ff6b6b',
-    marginBottom: 10,
+    color: '#222',
+    textAlign: 'center',
+    marginBottom: 12
   },
+
   subtitle: {
     fontSize: 16,
-    color: '#666',
-    marginBottom: 40,
+    lineHeight: 23,
+    color: '#777',
     textAlign: 'center',
+    paddingHorizontal: 12,
+    marginBottom: 32
   },
-  card: {
+
+  features: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 38
+  },
+
+  feature: {
+    width: '31%',
     backgroundColor: '#fff',
-    padding: 30,
-    borderRadius: 15,
-    elevation: 3,
-    marginBottom: 40,
-    width: '100%',
+    borderRadius: 16,
+    paddingVertical: 16,
     alignItems: 'center',
+    elevation: 2
   },
-  welcomeText: {
-    fontSize: 22,
+
+  featureIcon: {
+    fontSize: 27,
+    marginBottom: 7
+  },
+
+  featureText: {
+    fontSize: 12,
+    color: '#555',
     fontWeight: '600',
-    color: '#333',
-    marginBottom: 10,
+    textAlign: 'center'
   },
-  infoText: {
-    fontSize: 14,
-    color: '#888',
-  },
+
   button: {
-    backgroundColor: '#ff6b6b',
-    paddingVertical: 15,
-    paddingHorizontal: 40,
-    borderRadius: 25,
-    width: '100%',
+    backgroundColor: '#FF7A00',
+    paddingVertical: 17,
+    borderRadius: 14,
+    alignItems: 'center',
+    elevation: 3
   },
+
   buttonText: {
     color: '#fff',
     fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: 'bold'
   },
+
+  footer: {
+    textAlign: 'center',
+    marginTop: 24,
+    color: '#999',
+    fontSize: 13
+  }
 });

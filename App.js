@@ -109,14 +109,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: '#f8f9fa'
+    backgroundColor: '#fff7f0'
   },
 
   title: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: 'bold',
     marginBottom: 8,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: '#222'
   },
 
   role: {
@@ -126,21 +127,21 @@ const styles = StyleSheet.create({
   },
 
   btn: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#ff7a00',
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 12,
     marginBottom: 15
   },
 
   logoutBtn: {
-    backgroundColor: '#dc3545',
+    backgroundColor: '#222',
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 12,
     marginBottom: 15
   },
 
   txt: {
-    color: 'white',
+    color: '#fff',
     textAlign: 'center',
     fontWeight: 'bold'
   }

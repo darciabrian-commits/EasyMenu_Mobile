@@ -358,157 +358,169 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     paddingTop: 50,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: '#FFF7F0'
   },
 
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 20
   },
 
   title: {
-    fontSize: 25,
+    fontSize: 27,
     fontWeight: 'bold',
+    color: '#222'
   },
 
   backText: {
-    color: '#007bff',
-    fontWeight: '600',
+    color: '#FF7A00',
+    fontWeight: 'bold',
+    fontSize: 15
   },
 
   cardForm: {
     backgroundColor: '#fff',
-    padding: 16,
-    borderRadius: 12,
-    marginBottom: 20,
-    elevation: 2,
+    padding: 18,
+    borderRadius: 18,
+    marginBottom: 22,
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowRadius: 7
   },
 
   input: {
     borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 8,
-    padding: 12,
-    marginBottom: 12,
-    backgroundColor: '#fff',
+    borderColor: '#E7E7E7',
+    borderRadius: 12,
+    padding: 13,
+    marginBottom: 13,
+    backgroundColor: '#FAFAFA',
+    color: '#222',
+    fontSize: 15
   },
 
   label: {
     fontWeight: '600',
-    marginBottom: 8,
+    color: '#444',
+    marginBottom: 9
   },
 
   categoryRow: {
     flexDirection: 'row',
     gap: 8,
-    marginBottom: 15,
+    marginBottom: 17
   },
 
   categoryBtn: {
     flex: 1,
     borderWidth: 1,
-    borderColor: '#ff6b6b',
-    padding: 8,
-    borderRadius: 8,
+    borderColor: '#FF7A00',
+    paddingVertical: 10,
+    borderRadius: 10
   },
 
   categoryBtnActive: {
-    backgroundColor: '#ff6b6b',
+    backgroundColor: '#FF7A00'
   },
 
   categoryText: {
     textAlign: 'center',
-    color: '#ff6b6b',
-    fontSize: 12,
-    fontWeight: '600',
+    color: '#FF7A00',
+    fontSize: 11,
+    fontWeight: 'bold'
   },
 
   categoryTextActive: {
-    color: '#fff',
+    color: '#fff'
   },
 
   saveBtn: {
-    backgroundColor: '#28a745',
-    padding: 13,
-    borderRadius: 8,
-    alignItems: 'center',
+    backgroundColor: '#FF7A00',
+    padding: 14,
+    borderRadius: 12,
+    alignItems: 'center'
   },
 
   saveBtnEdit: {
-    backgroundColor: '#f0ad4e',
+    backgroundColor: '#E89A19'
   },
 
   saveText: {
     color: '#fff',
     fontWeight: 'bold',
+    fontSize: 16
   },
 
   cancelBtn: {
-    padding: 10,
-    alignItems: 'center',
+    padding: 11,
+    alignItems: 'center'
   },
 
   cancelText: {
-    color: '#666',
+    color: '#777',
+    fontWeight: '600'
   },
 
   itemCard: {
     backgroundColor: '#fff',
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 10,
+    padding: 16,
+    borderRadius: 14,
+    marginBottom: 12,
+    elevation: 2
   },
 
   itemInfo: {
-    marginBottom: 10,
+    marginBottom: 12
   },
 
   itemName: {
-    fontSize: 17,
+    fontSize: 18,
     fontWeight: 'bold',
+    color: '#222'
   },
 
   itemDescription: {
-    color: '#666',
-    marginTop: 3,
+    color: '#777',
+    marginTop: 4
   },
 
   itemMeta: {
-    color: '#007bff',
-    marginTop: 5,
-    fontWeight: '600',
+    color: '#FF7A00',
+    marginTop: 6,
+    fontWeight: 'bold'
   },
 
   actionsRow: {
     flexDirection: 'row',
-    gap: 8,
+    gap: 8
   },
 
   editBtn: {
     flex: 1,
-    backgroundColor: '#f0ad4e',
-    padding: 9,
-    borderRadius: 7,
+    backgroundColor: '#E89A19',
+    padding: 10,
+    borderRadius: 9
   },
 
   deleteBtn: {
     flex: 1,
-    backgroundColor: '#dc3545',
-    padding: 9,
-    borderRadius: 7,
+    backgroundColor: '#222',
+    padding: 10,
+    borderRadius: 9
   },
 
   actionText: {
     color: '#fff',
     textAlign: 'center',
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
 
   emptyText: {
     textAlign: 'center',
-    color: '#888',
-    marginTop: 20,
-  },
+    color: '#999',
+    marginTop: 25
+  }
 });
