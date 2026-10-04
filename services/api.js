@@ -33,7 +33,6 @@ const request = async (
       if (body) {
         message = body;
       }
-
     } catch (_) {}
 
     throw new Error(message);
@@ -96,6 +95,41 @@ export const apiService = {
       `/productos/${id}`,
       {
         method: 'DELETE'
+      },
+      true
+    ),
+
+  getPedidos: () =>
+    request(
+      '/pedidos',
+      {},
+      true
+    ),
+
+  createPedido: (data) =>
+    request(
+      '/pedidos',
+      {
+        method: 'POST',
+        body: JSON.stringify(data)
+      },
+      true
+    ),
+
+  cambiarEstadoPedido: (id, estado) =>
+    request(
+      `/pedidos/${id}/estado?estado=${estado}`,
+      {
+        method: 'PATCH'
+      },
+      true
+    ),
+
+  cancelarPedido: (id) =>
+    request(
+      `/pedidos/${id}/cancelar`,
+      {
+        method: 'PATCH'
       },
       true
     )

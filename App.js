@@ -9,6 +9,8 @@ import {
 import BienvenidaScreen from './components/BienvenidaScreen';
 import LoginScreen from './components/LoginScreen';
 import PlatillosScreen from './components/PlatillosScreen';
+import PedidosScreen from './components/PedidosScreen';
+
 import { apiService } from './services/api';
 
 export default function App() {
@@ -50,6 +52,14 @@ export default function App() {
     );
   }
 
+  if (screen === 'pedidos') {
+    return (
+      <PedidosScreen
+        onBack={() => setScreen('dashboard')}
+      />
+    );
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>
@@ -61,14 +71,25 @@ export default function App() {
       </Text>
 
       {session?.rol === 'ADMINISTRADOR' && (
-        <TouchableOpacity
-          style={styles.btn}
-          onPress={() => setScreen('productos')}
-        >
-          <Text style={styles.txt}>
-            CRUD de Productos
-          </Text>
-        </TouchableOpacity>
+        <>
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={() => setScreen('productos')}
+          >
+            <Text style={styles.txt}>
+              CRUD de Productos
+            </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={() => setScreen('pedidos')}
+          >
+            <Text style={styles.txt}>
+              CRUD de Pedidos
+            </Text>
+          </TouchableOpacity>
+        </>
       )}
 
       <TouchableOpacity
