@@ -46,6 +46,11 @@ const request = async (
 };
 
 export const apiService = {
+
+  // =========================
+  // AUTENTICACIÓN DEL PERSONAL
+  // =========================
+
   login: async (email, password) => {
     const data = await request(
       '/auth/login',
@@ -67,9 +72,16 @@ export const apiService = {
     authToken = null;
   },
 
+
+  // =========================
+  // PRODUCTOS
+  // =========================
+
+  // Público: cliente puede consultar el menú
   getProductos: () =>
     request('/productos'),
 
+  // Solo administrador
   createProducto: (data) =>
     request(
       '/productos',
@@ -80,6 +92,7 @@ export const apiService = {
       true
     ),
 
+  // Solo administrador
   updateProducto: (id, data) =>
     request(
       `/productos/${id}`,
@@ -90,6 +103,7 @@ export const apiService = {
       true
     ),
 
+  // Solo administrador
   deleteProducto: (id) =>
     request(
       `/productos/${id}`,
@@ -99,20 +113,45 @@ export const apiService = {
       true
     ),
 
-  getPedidos: () =>
-    request(
-      '/pedidos',
-      {},
-      true
-    ),
 
+  // =========================
+  // PEDIDOS DEL CLIENTE
+  // =========================
+
+  // Crear pedido SIN login
   createPedido: (data) =>
     request(
       '/pedidos',
       {
         method: 'POST',
         body: JSON.stringify(data)
-      },
+      }
+    ),
+
+  // Consultar pedido por código corto SIN login
+  getPedidoPorCodigo: (codigoCorto) =>
+    request(
+      `/pedidos/codigo/${encodeURIComponent(codigoCorto)}`
+    ),
+
+  // Cancelar pedido por código corto SIN login
+  cancelarPedidoPorCodigo: (codigoCorto) =>
+    request(
+      `/pedidos/codigo/${encodeURIComponent(codigoCorto)}/cancelar`,
+      {
+        method: 'PATCH'
+      }
+    ),
+
+
+  // =========================
+  // PEDIDOS DEL PERSONAL
+  // =========================
+
+  getPedidos: () =>
+    request(
+      '/pedidos',
+      {},
       true
     ),
 

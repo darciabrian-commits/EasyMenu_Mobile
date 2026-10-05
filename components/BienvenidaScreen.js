@@ -9,7 +9,10 @@ import {
 
 import { StatusBar } from 'expo-status-bar';
 
-export default function BienvenidaScreen({ onStart }) {
+export default function BienvenidaScreen({
+  onClient,
+  onStaff
+}) {
   return (
     <View style={styles.container}>
       <StatusBar style="dark" />
@@ -27,22 +30,22 @@ export default function BienvenidaScreen({ onStart }) {
       </Text>
 
       <Text style={styles.subtitle}>
-        Gestiona productos y pedidos de forma rápida,
-        sencilla y desde un solo lugar.
+        Consulta el menú, realiza tu pedido o accede
+        al sistema como personal.
       </Text>
 
       <View style={styles.features}>
         <View style={styles.feature}>
           <Text style={styles.featureIcon}>🍔</Text>
           <Text style={styles.featureText}>
-            Productos
+            Menú
           </Text>
         </View>
 
         <View style={styles.feature}>
-          <Text style={styles.featureIcon}>📋</Text>
+          <Text style={styles.featureIcon}>🛒</Text>
           <Text style={styles.featureText}>
-            Pedidos
+            Pedido
           </Text>
         </View>
 
@@ -55,12 +58,22 @@ export default function BienvenidaScreen({ onStart }) {
       </View>
 
       <TouchableOpacity
-        style={styles.button}
+        style={styles.clientButton}
         activeOpacity={0.85}
-        onPress={onStart}
+        onPress={onClient}
       >
         <Text style={styles.buttonText}>
-          Comenzar
+          Hacer un pedido
+        </Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.staffButton}
+        activeOpacity={0.85}
+        onPress={onStaff}
+      >
+        <Text style={styles.buttonText}>
+          Acceso del personal
         </Text>
       </TouchableOpacity>
 
@@ -110,7 +123,7 @@ const styles = StyleSheet.create({
   features: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 38
+    marginBottom: 32
   },
 
   feature: {
@@ -134,8 +147,17 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
 
-  button: {
+  clientButton: {
     backgroundColor: '#FF7A00',
+    paddingVertical: 17,
+    borderRadius: 14,
+    alignItems: 'center',
+    elevation: 3,
+    marginBottom: 12
+  },
+
+  staffButton: {
+    backgroundColor: '#222',
     paddingVertical: 17,
     borderRadius: 14,
     alignItems: 'center',
@@ -144,7 +166,7 @@ const styles = StyleSheet.create({
 
   buttonText: {
     color: '#fff',
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: 'bold'
   },
 
